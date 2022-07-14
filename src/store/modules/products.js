@@ -10,11 +10,13 @@ for (let i = 0; i < 6; i++) {
   })
 }
 
-const state = { productList }
+const state = { productList, orderType: 'price', order: 'ascending' }
 
 export const mutationTypes = {
   addProduct: '[PRODUCTS] ADD PRODUCT',
   removeProduct: '[PRODUCTS] REMOVE PRODUCT',
+  setOrderType: '[PRODUCTS] SET ORDER TYPE',
+  setOrder: '[PRODUCTS] SET ORDER',
 }
 
 const mutations = {
@@ -34,6 +36,18 @@ const mutations = {
   [mutationTypes.removeProduct](state, id) {
     if (id !== 0 && !id) return
     state.productList = state.productList.filter((product) => product.id !== id)
+  },
+
+  [mutationTypes.setOrderType](state, type) {
+    if (!type || !['price', 'title'].includes(type))
+      throw new Error('incorrect type')
+    state.orderType = type
+  },
+
+  [mutationTypes.setOrder](state, order) {
+    if (!order || !['ascending', 'descending'].includes(order))
+      throw new Error('incorrect order')
+    state.order = order
   },
 }
 
