@@ -1,10 +1,12 @@
 <template>
   <div class="product-list">
-    <app-product-card
-      v-for="product of productList"
-      :key="product.id"
-      :product="product"
-    />
+    <transition-group name="product-list">
+      <app-product-card
+        v-for="product of productList"
+        :key="product.id"
+        :product="product"
+      />
+    </transition-group>
   </div>
 </template>
 <script>
@@ -29,5 +31,19 @@ export default {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding-top: 51px;
+}
+
+.product-list-enter-active,
+.product-list-leave-active {
+  transition: 0.5s ease;
+}
+
+.product-list-enter-from,
+.product-list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+.product-list-move {
+  transition: 0.5s ease;
 }
 </style>
