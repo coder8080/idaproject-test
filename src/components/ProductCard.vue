@@ -7,11 +7,15 @@
     <div class="product__text">
       <h3 class="product__title">{{ product.title }}</h3>
       <p class="product__description">{{ product.description }}</p>
-      <h2 class="product__price">{{ product.price }}&nbsp;руб.</h2>
+      <h2 class="product__price">
+        {{ formatNumber(product.price) }}&nbsp;руб.
+      </h2>
     </div>
   </div>
 </template>
 <script>
+import formatNumber from '@/utilities/formatNumber'
+
 export default {
   name: 'AppProductCard',
   props: {
@@ -19,6 +23,11 @@ export default {
       type: Object,
       required: true,
     },
+  },
+  data() {
+    return {
+      formatNumber,
+    }
   },
 }
 </script>
