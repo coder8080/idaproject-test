@@ -96,7 +96,6 @@ export default {
   border: none;
   padding: 12px 16px;
   resize: none;
-  text-size-adjust: none;
   width: 100%;
 }
 
@@ -112,7 +111,6 @@ export default {
   left: 16px;
   right: 16px;
   font-weight: 400;
-  text-size-adjust: none;
 }
 
 .field__input:valid + .field__placeholder {
