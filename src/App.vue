@@ -1,15 +1,19 @@
 <template>
   <main class="app">
+    <app-add-product />
     <app-product-list />
   </main>
 </template>
 <script>
 import AppProductList from '@/components/ProductList.vue'
+import AppAddProduct from '@/components/AddProduct.vue'
+import 'normalize.css'
 
 export default {
   name: 'App',
   components: {
     AppProductList,
+    AppAddProduct,
   },
 }
 </script>
@@ -35,6 +39,7 @@ export default {
   --body-font: 'Source Sans Pro', sans-serif;
 
   --border-radius: 4px;
+  --big-border-radius: 10px;
 
   --h1-font-size: 1.75rem;
   --h1-line-height: 2.2rem;
@@ -58,6 +63,7 @@ export default {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  border: none;
 }
 
 body {
@@ -88,7 +94,20 @@ h3 {
   line-height: var(--h3-line-height);
 }
 
+.text-small {
+  font-size: var(--small-font-size);
+  line-height: var(--small-line-height);
+}
+
+.text-smaller {
+  font-size: var(--smaller-font-size);
+  line-height: var(--smaller-line-height);
+}
+
 .app {
-  padding: 20px;
+  padding: 32px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
 }
 </style>
