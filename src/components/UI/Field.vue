@@ -9,7 +9,6 @@
     <div class="field__placeholder-container">
       <input
         v-if="type === 'input'"
-        :placeholder="placeholder"
         type="text"
         class="field__input text-small"
         :id="id"
@@ -22,7 +21,7 @@
         class="field__input text-small"
         :id="id"
         :value="modelValue"
-        :required="isRequired"
+        required
         @input="onInput"
         rows="6"
       />
@@ -69,6 +68,7 @@ export default {
   flex-direction: column;
   gap: 7px;
   width: 100%;
+  padding-top: 1px;
 }
 
 .field__label {
