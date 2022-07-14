@@ -34,7 +34,10 @@ export default {
 
   --card-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
+  --card-shadow-hover: 0px 20px 30px rgba(0, 0, 0, 0.08),
+    0px 6px 10px rgba(0, 0, 0, 0.08);
   --input-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  --input-shadow-hover: 0px 2px 10px rgba(0, 0, 0, 0.2);
 
   --body-font: 'Source Sans Pro', sans-serif;
 
@@ -54,6 +57,9 @@ export default {
   --smaller-font-size: 0.625rem;
   --smaller-line-height: 0.785625rem;
   --smaller-letter-spacing: -2%;
+  --micro-font-size: 0.5rem;
+  --micro-line-height: 0.62875rem;
+  --micro-letter-spacing: -2%;
 
   --title-font-weight: 600;
   --normal-font-weight: 400;
@@ -102,6 +108,13 @@ h3 {
 .text-smaller {
   font-size: var(--smaller-font-size);
   line-height: var(--smaller-line-height);
+  letter-spacing: var(--smaller-letter-spacing);
+}
+
+.text-micro {
+  font-size: var(--micro-font-size);
+  line-height: var(--micro-line-height);
+  letter-spacing: var(--micro-letter-spacing);
 }
 
 .app {

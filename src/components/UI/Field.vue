@@ -11,25 +11,34 @@
         v-if="type === 'input'"
         type="text"
         class="field__input text-small"
+        :class="{ error }"
         :id="id"
         :value="modelValue"
-        :required="isRequired"
         @input="onInput"
+        @focus="onFocus?.()"
       />
       <textarea
         v-else
         class="field__input text-small"
+        :class="{ error }"
         :id="id"
         :value="modelValue"
-        required
         @input="onInput"
         rows="6"
+        @focus="onFocus?.()"
       />
-      <span class="field__placeholder text-small">{{ placeholder }}</span>
+      <span
+        class="field__placeholder text-small"
+        :class="{ field__placeholder_shown: showPlaceholder }"
+        >{{ placeholder }}</span
+      >
+      <span class="field__error text-micro">{{ error }}</span>
     </div>
   </div>
 </template>
 <script>
+import formatNumber from '@/utilities/formatNumber'
+
 export default {
   name: 'AppField',
   props: {
@@ -51,13 +60,25 @@ export default {
     },
     type: {
       type: String,
-      require: true,
+      required: true,
     },
+    dType: String,
+    onFocus: Function,
+    error: String,
     modelValue: String,
   },
   methods: {
     onInput(event) {
-      this.$emit('update:modelValue', event.target.value)
+      let newValue = event.target.value.replaceAll(' ', '')
+      if (this.dType === 'number') {
+        newValue = formatNumber(newValue)
+      }
+      this.$emit('update:modelValue', newValue)
+    },
+  },
+  computed: {
+    showPlaceholder() {
+      return this.modelValue.length === 0
     },
   },
 }
@@ -75,6 +96,7 @@ export default {
   color: var(--label-color);
   position: relative;
   align-self: flex-start;
+  cursor: pointer;
 }
 
 .field__label_required::after {
@@ -97,6 +119,21 @@ export default {
   padding: 12px 16px;
   resize: none;
   width: 100%;
+  transition: box-shadow 0.15s, 0.15s;
+  box-sizing: border-box;
+  outline: none;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.field__input:hover,
+.field__input:focus {
+  box-shadow: var(--input-shadow-hover);
+}
+
+.field__input.error {
+  border-color: var(--red-color);
 }
 
 .field__placeholder-container {
@@ -111,9 +148,17 @@ export default {
   left: 16px;
   right: 16px;
   font-weight: 400;
+  display: none;
 }
 
-.field__input:valid + .field__placeholder {
-  display: none;
+.field__error {
+  color: var(--red-color);
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+}
+
+.field__placeholder_shown {
+  display: initial;
 }
 </style>
