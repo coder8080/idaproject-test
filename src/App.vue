@@ -1,9 +1,16 @@
 <template>
-  <main class="app"></main>
+  <main class="app">
+    <app-product-list />
+  </main>
 </template>
 <script>
+import AppProductList from '@/components/ProductList.vue'
+
 export default {
   name: 'App',
+  components: {
+    AppProductList,
+  },
 }
 </script>
 <style>
@@ -79,5 +86,9 @@ h2 {
 h3 {
   font-size: var(--h3-font-size);
   line-height: var(--h3-line-height);
+}
+
+.app {
+  padding: 20px;
 }
 </style>
