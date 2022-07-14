@@ -1,5 +1,8 @@
 <template>
   <div class="product">
+    <div class="product__delete" @click="onDelete">
+      <img src="@/assets/delete.svg" alt="delete" />
+    </div>
     <div
       class="product__image"
       :style="{ backgroundImage: `url('${product.imgUrl}')` }"
@@ -15,6 +18,7 @@
 </template>
 <script>
 import formatNumber from '@/utilities/formatNumber'
+import { mutationTypes } from '@/store/modules/products'
 
 export default {
   name: 'AppProductCard',
@@ -29,6 +33,11 @@ export default {
       formatNumber,
     }
   },
+  methods: {
+    onDelete() {
+      this.$store.commit(mutationTypes.removeProduct, this.product.id)
+    },
+  },
 }
 </script>
 <style scoped>
@@ -39,8 +48,8 @@ export default {
   border-radius: var(--border-radius);
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   transition: 0.3s;
+  position: relative;
 }
 
 .product:hover {
@@ -52,6 +61,8 @@ export default {
   width: 100%;
   background-size: cover;
   background-position: center;
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
 }
 
 .product__text {
@@ -66,5 +77,29 @@ export default {
 .product__price {
   padding-top: 10px;
   margin-top: auto;
+}
+
+.product__delete {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background-color: var(--red-color);
+  border-radius: var(--big-border-radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  top: 40px;
+  right: 40px;
+  opacity: 0;
+  transition: 0.2s;
+  pointer-events: none;
+}
+
+.product:hover .product__delete {
+  top: -7px;
+  right: -7px;
+  opacity: 1;
+  pointer-events: initial;
 }
 </style>

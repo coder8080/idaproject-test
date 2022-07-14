@@ -19,7 +19,7 @@ export const mutationTypes = {
 
 const mutations = {
   [mutationTypes.addProduct](state, { imgUrl, title, description, price }) {
-    if (!imgUrl || !title || !description || !price) return
+    if (!imgUrl || !title || !price) return
     const id =
       state.productList.length > 0
         ? Math.max(
@@ -32,7 +32,7 @@ const mutations = {
   },
 
   [mutationTypes.removeProduct](state, id) {
-    if (!id) return
+    if (id !== 0 && !id) return
     state.productList = state.productList.filter((product) => product.id !== id)
   },
 }
