@@ -60,9 +60,11 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex: 1;
 }
 
 .product__price {
-  margin-top: 10px;
+  padding-top: 10px;
+  margin-top: auto;
 }
 </style>

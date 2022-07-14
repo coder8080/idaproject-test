@@ -22,11 +22,15 @@ const mutations = {
     if (!imgUrl || !title || !description || !price) return
     const id =
       state.productList.length > 0
-        ? state.productList[state.productList.length - 1].id + 1
+        ? Math.max(
+            state.productList[state.productList.length - 1].id,
+            state.productList[0].id
+          ) + 1
         : 0
     const product = { id, imgUrl, title, description, price }
-    state.productList.push(product)
+    state.productList.unshift(product)
   },
+
   [mutationTypes.removeProduct](state, id) {
     if (!id) return
     state.productList = state.productList.filter((product) => product.id !== id)
