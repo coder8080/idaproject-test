@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     onInput(event) {
-      let newValue = event.target.value.replaceAll(' ', '')
+      let newValue = event.target.value
       if (this.dType === 'number') {
         newValue = formatNumber(newValue)
       }
