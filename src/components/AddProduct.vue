@@ -75,7 +75,7 @@ export default {
         title: this.title,
         description: this.description,
         imgUrl: this.imgUrl,
-        price: this.price,
+        price: Number(this.price.replaceAll(' ', '')),
       })
       this.title = ''
       this.description = ''
