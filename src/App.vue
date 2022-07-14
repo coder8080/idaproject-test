@@ -34,7 +34,10 @@ export default {
 
   --card-shadow: 0px 20px 30px rgba(0, 0, 0, 0.04),
     0px 6px 10px rgba(0, 0, 0, 0.02);
+  --card-shadow-hover: 0px 20px 30px rgba(0, 0, 0, 0.08),
+    0px 6px 10px rgba(0, 0, 0, 0.08);
   --input-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+  --input-shadow-hover: 0px 2px 10px rgba(0, 0, 0, 0.2);
 
   --body-font: 'Source Sans Pro', sans-serif;
 

@@ -75,6 +75,7 @@ export default {
   color: var(--label-color);
   position: relative;
   align-self: flex-start;
+  cursor: pointer;
 }
 
 .field__label_required::after {
@@ -97,6 +98,14 @@ export default {
   padding: 12px 16px;
   resize: none;
   width: 100%;
+  transition: box-shadow 0.15s;
+  box-sizing: border-box;
+  outline: none;
+}
+
+.field__input:hover,
+.field__input:focus {
+  box-shadow: var(--input-shadow-hover);
 }
 
 .field__placeholder-container {

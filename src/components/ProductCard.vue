@@ -31,6 +31,11 @@ export default {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  transition: 0.3s;
+}
+
+.product:hover {
+  box-shadow: var(--card-shadow-hover);
 }
 
 .product__image {

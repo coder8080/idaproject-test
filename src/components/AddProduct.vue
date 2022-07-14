@@ -30,9 +30,9 @@
         placeholder="Введите цену"
         type="input"
       />
-      <app-button class="add-product__button" type="submit"
-        >Добавить товар</app-button
-      >
+      <app-button class="add-product__button" type="submit">
+        Добавить товар
+      </app-button>
     </form>
   </div>
 </template>
