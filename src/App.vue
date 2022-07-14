@@ -57,6 +57,9 @@ export default {
   --smaller-font-size: 0.625rem;
   --smaller-line-height: 0.785625rem;
   --smaller-letter-spacing: -2%;
+  --micro-font-size: 0.5rem;
+  --micro-line-height: 0.62875rem;
+  --micro-letter-spacing: -2%;
 
   --title-font-weight: 600;
   --normal-font-weight: 400;
@@ -105,6 +108,13 @@ h3 {
 .text-smaller {
   font-size: var(--smaller-font-size);
   line-height: var(--smaller-line-height);
+  letter-spacing: var(--smaller-letter-spacing);
+}
+
+.text-micro {
+  font-size: var(--micro-font-size);
+  line-height: var(--micro-line-height);
+  letter-spacing: var(--micro-letter-spacing);
 }
 
 .app {

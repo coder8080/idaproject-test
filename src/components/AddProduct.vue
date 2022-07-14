@@ -8,6 +8,9 @@
         :isRequired="true"
         placeholder="Введите наименование товара"
         type="input"
+        v-model="title"
+        :onFocus="onFocus"
+        :error="titleError"
       />
       <app-field
         id="product-description"
@@ -15,6 +18,8 @@
         :isRequired="false"
         placeholder="Введите описание товара"
         type="textarea"
+        v-model="description"
+        :onFocus="onFocus"
       />
       <app-field
         id="product-img-url"
@@ -22,6 +27,9 @@
         :isRequired="true"
         placeholder="Введите ссылку"
         type="input"
+        v-model="imgUrl"
+        :onFocus="onFocus"
+        :error="imgUrlError"
       />
       <app-field
         id="product-price"
@@ -29,8 +37,16 @@
         :isRequired="true"
         placeholder="Введите цену"
         type="input"
+        v-model="price"
+        :onFocus="onFocus"
+        :error="priceError"
+        dType="number"
       />
-      <app-button class="add-product__button" type="submit">
+      <app-button
+        :disabled="buttonDisabled"
+        class="add-product__button"
+        type="submit"
+      >
         Добавить товар
       </app-button>
     </form>
@@ -39,6 +55,46 @@
 <script>
 export default {
   name: 'AppAddProduct',
+  data() {
+    return {
+      title: '',
+      description: '',
+      imgUrl: '',
+      price: '',
+      wasFocused: false,
+    }
+  },
+  methods: {
+    onFocus() {
+      this.wasFocused = true
+    },
+  },
+  computed: {
+    titleError() {
+      return !this.wasFocused || this.title ? '' : 'Поле является обязательным'
+    },
+    imgUrlError() {
+      return !this.wasFocused || this.imgUrl ? '' : 'Поле является обязательным'
+    },
+    priceError() {
+      if (!this.wasFocused) return ''
+      if (this.price) {
+        return isNaN(this.price.replaceAll(' ', ''))
+          ? 'Введите только цифру'
+          : ''
+      } else {
+        return 'Поле является обязательным'
+      }
+    },
+    anyErrors() {
+      return this.titleError || this.imgUrlError || this.priceError
+        ? true
+        : false
+    },
+    buttonDisabled() {
+      return !this.wasFocused || this.anyErrors
+    },
+  },
 }
 </script>
 <style scoped>
