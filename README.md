@@ -4,6 +4,8 @@
 Вёрстка и реализация функционала по макету.
 Выполнены все 3 уровня задания.
 
+Github Pages: (https://coder8080.github.io/idaproject-test/)[https://coder8080.github.io/idaproject-test/]
+
 # Характеристики
 - Vue.js
 - vue-cli
