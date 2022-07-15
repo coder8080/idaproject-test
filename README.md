@@ -4,7 +4,7 @@
 Вёрстка и реализация функционала по макету.
 Выполнены все 3 уровня задания.
 
-Github Pages: (https://coder8080.github.io/idaproject-test/)[https://coder8080.github.io/idaproject-test/]
+Github Pages: [https://coder8080.github.io/idaproject-test/](https://coder8080.github.io/idaproject-test/)
 
 # Характеристики
 - Vue.js
@@ -14,7 +14,7 @@ Github Pages: (https://coder8080.github.io/idaproject-test/)[https://coder8080.g
 - SCSS
 - git-flow
 - Eslint & Prettier
-- 
+
 # Реализовано:
 - Вёрстка
 - Взаимодействие с пользователем
