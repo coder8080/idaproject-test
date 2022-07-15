@@ -1,9 +1,6 @@
 <template>
-  <div class="products">
-    <div class="products__order">
-      <app-order-select />
-    </div>
-    <div class="product-list">
+  <div class="product-list">
+    <div class="products">
       <transition-group name="product-list">
         <app-product-card
           v-for="product of sortedProducts"
@@ -16,14 +13,12 @@
 </template>
 <script>
 import AppProductCard from '@/components/ProductCard.vue'
-import AppOrderSelect from '@/components/OrderSelect.vue'
 import { mapState } from 'vuex'
 
 export default {
   name: 'AppProductList',
   components: {
     AppProductCard,
-    AppOrderSelect,
   },
   computed: {
     ...mapState({
@@ -37,12 +32,14 @@ export default {
           if (this.orderType === 'title') {
             return product1.title.localeCompare(product2.title)
           } else {
+            if (product1.price === product2.price) return 0
             return product1.price < product2.price ? -1 : 1
           }
         } else {
           if (this.orderType === 'title') {
             return product2.title.localeCompare(product1.title)
           } else {
+            if (product2.price === product1.price) return 0
             return product2.price < product1.price ? -1 : 1
           }
         }
@@ -53,13 +50,41 @@ export default {
 </script>
 <style scoped>
 .product-list {
+  grid-area: product-list;
+}
+.products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: min-content;
   gap: 20px;
-  padding-top: 20px;
+  /* padding-top: 20px; */
 }
 
+@media screen and (max-width: 1600px) {
+  .products {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 700px) and (min-width: 500px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Vue list animations */
 .product-list-enter-active {
   transition: 0.5s ease;
 }
