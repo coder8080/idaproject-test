@@ -10,13 +10,19 @@ for (let i = 0; i < 6; i++) {
   })
 }
 
-const state = { productList, orderType: 'price', order: 'ascending' }
+const state = {
+  productList,
+  orderType: 'price',
+  order: 'ascending',
+  isPopupShown: false,
+}
 
 export const mutationTypes = {
   addProduct: '[PRODUCTS] ADD PRODUCT',
   removeProduct: '[PRODUCTS] REMOVE PRODUCT',
   setOrderType: '[PRODUCTS] SET ORDER TYPE',
   setOrder: '[PRODUCTS] SET ORDER',
+  togglePopup: '[PRODUCTS] TOGGLE POPUP',
 }
 
 const mutations = {
@@ -48,6 +54,10 @@ const mutations = {
     if (!order || !['ascending', 'descending'].includes(order))
       throw new Error('incorrect order')
     state.order = order
+  },
+
+  [mutationTypes.togglePopup](state) {
+    state.isPopupShown = !state.isPopupShown
   },
 }
 

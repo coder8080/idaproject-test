@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="product__delete" @click="onDelete">
-      <img src="@/assets/delete.svg" alt="delete" />
+      <img src="@/assets/icons/delete.svg" alt="delete" />
     </div>
     <div
       class="product__image"
@@ -101,5 +101,14 @@ export default {
   right: -7px;
   opacity: 1;
   pointer-events: initial;
+}
+
+@media screen and (max-width: 700px) {
+  .product__delete {
+    top: -7px;
+    right: -7px;
+    opacity: 1;
+    pointer-events: initial;
+  }
 }
 </style>
