@@ -19,6 +19,11 @@
         @change="setOrder"
       />
     </div>
+    <app-icon-button
+      class="add-product-btn"
+      @click="togglePopup"
+      :iconUrl="require('../assets/icons/add-circle-line.svg')"
+    />
   </div>
 </template>
 <script>
@@ -41,6 +46,9 @@ export default {
     setOrder(event) {
       this.$store.commit(mutationTypes.setOrder, event.target.value)
     },
+    togglePopup() {
+      this.$store.commit(mutationTypes.togglePopup)
+    },
   },
 }
 </script>
@@ -49,13 +57,38 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  grid-area: order-select;
 }
 .order-select__selects {
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
+
 .order-select__title {
   margin: 0;
+}
+
+@media screen and (min-width: 701px) {
+  .add-product-btn {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .order-select__selects {
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .order-select__title-container {
+    display: none;
+  }
+
+  .order-select {
+    flex-direction: row;
+    align-items: center;
+  }
 }
 </style>

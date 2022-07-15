@@ -1,12 +1,14 @@
 <template>
   <main class="app">
+    <app-order-select />
     <app-add-product />
     <app-product-list />
   </main>
 </template>
 <script>
-import AppProductList from '@/components/ProductList.vue'
-import AppAddProduct from '@/components/AddProduct.vue'
+import AppProductList from '@/components/ProductList'
+import AppAddProduct from '@/components/AddProduct'
+import AppOrderSelect from '@/components/OrderSelect'
 import 'normalize.css'
 
 export default {
@@ -14,6 +16,12 @@ export default {
   components: {
     AppProductList,
     AppAddProduct,
+    AppOrderSelect,
+  },
+  data() {
+    return {
+      isShown: true,
+    }
   },
 }
 </script>
@@ -119,8 +127,23 @@ h3 {
 
 .app {
   padding: 32px;
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
+  row-gap: 20px;
+  column-gap: 16px;
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-template-areas: 'add-product order-select' 'add-product product-list';
+}
+
+@media screen and (max-width: 700px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas: 'order-select' 'product-list';
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .app {
+    padding: 16px !important;
+  }
 }
 </style>
