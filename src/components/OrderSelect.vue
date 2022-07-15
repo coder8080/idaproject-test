@@ -1,9 +1,9 @@
 <template>
   <div class="order-select">
-    <div class="order-select__title-container">
-      <h1 class="order-select__title">Сортировка</h1>
+    <div class="title-container">
+      <h1 class="title">Сортировка</h1>
     </div>
-    <div class="order-select__selects">
+    <div class="selects">
       <app-select
         :options="[
           { text: 'По цене', value: 'price' },
@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     setOrderType(event) {
-      console.log('change')
       this.$store.commit(mutationTypes.setOrderType, event.target.value)
     },
     setOrder(event) {
@@ -52,43 +51,41 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .order-select {
   display: flex;
   flex-direction: column;
   gap: 16px;
   grid-area: order-select;
-}
-.order-select__selects {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
 
-.order-select__title {
-  margin: 0;
-}
-
-@media screen and (min-width: 701px) {
-  .add-product-btn {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .order-select__selects {
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
+  .selects {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
   }
 
-  .order-select__title-container {
-    display: none;
+  .title-container .title {
+    margin: 0;
   }
 
-  .order-select {
+  @media screen and (min-width: 701px) {
+    .add-product-btn {
+      display: none !important;
+    }
+  }
+
+  @media screen and (max-width: 700px) {
     flex-direction: row;
     align-items: center;
+    .selects {
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .title-container {
+      display: none;
+    }
   }
 }
 </style>

@@ -6,27 +6,27 @@ export default {
   name: 'AppButton',
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .btn {
   padding: 10px 0;
-  border-radius: var(--big-border-radius);
+  border-radius: $big-border-radius;
   color: #fff;
-  background-color: var(--green-color);
+  background-color: $green-color;
   cursor: pointer;
-  box-shadow: 0px 0px 0px var(--green-color);
+  box-shadow: 0px 0px 0px $green-color;
   transition: box-shadow 0.15s, background-color 0.1s, color 0.1s;
-}
 
-.btn:disabled {
-  background-color: var(--gray-color);
-  color: var(--disabled-color);
-}
+  &:disabled {
+    background-color: $gray-color;
+    color: $disabled-color;
+  }
 
-.btn:enabled:active {
-  transform: scale(0.99);
-}
+  &:enabled:active {
+    transform: scale(0.99);
+  }
 
-.btn:enabled:hover {
-  box-shadow: 0px 0px 7px var(--green-color);
+  &:enabled:hover {
+    box-shadow: 0px 0px 7px $green-color;
+  }
 }
 </style>
