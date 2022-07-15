@@ -2,37 +2,40 @@
   <div class="field">
     <label
       :for="id"
-      class="field__label text-smaller"
-      :class="{ field__label_required: isRequired }"
+      class="label text-smaller"
+      :class="{ required: isRequired }"
       >{{ label }}</label
     >
-    <div class="field__placeholder-container">
+    <div class="placeholder-container">
       <input
         v-if="type === 'input'"
         type="text"
-        class="field__input text-small"
+        class="input text-small"
         :class="{ error }"
         :id="id"
         :value="modelValue"
+        placeholder=" "
+        :inputmode="dType === 'number' ? 'numeric' : 'text'"
         @input="onInput"
         @focus="onFocus?.()"
       />
       <textarea
         v-else
-        class="field__input text-small"
+        class="input text-small"
         :class="{ error }"
         :id="id"
         :value="modelValue"
-        @input="onInput"
+        placeholder=" "
         rows="6"
+        @input="onInput"
         @focus="onFocus?.()"
       />
       <span
-        class="field__placeholder text-small"
-        :class="{ field__placeholder_shown: showPlaceholder }"
+        class="placeholder text-small"
+        :class="{ shown: showPlaceholder }"
         >{{ placeholder }}</span
       >
-      <span class="field__error text-micro">{{ error }}</span>
+      <span class="error-text text-micro">{{ error }}</span>
     </div>
   </div>
 </template>
@@ -83,82 +86,92 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .field {
   display: flex;
   flex-direction: column;
   gap: 7px;
   width: 100%;
   padding-top: 1px;
-}
 
-.field__label {
-  color: var(--label-color);
-  position: relative;
-  align-self: flex-start;
-  cursor: pointer;
-}
+  .label {
+    color: $label-color;
+    position: relative;
+    align-self: flex-start;
+    cursor: pointer;
 
-.field__label_required::after {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  top: -1px;
-  right: -6px;
-  background-color: var(--red-color);
-}
+    &.required::after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      top: -1px;
+      right: -6px;
+      background-color: $red-color;
+    }
+  }
 
-.field__input {
-  background-color: var(--container-color);
-  box-shadow: var(--input-shadow);
-  border-radius: var(--border-radius);
-  border: none;
-  padding: 12px 16px;
-  resize: none;
-  width: 100%;
-  transition: box-shadow 0.15s, 0.15s;
-  box-sizing: border-box;
-  outline: none;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-}
+  .placeholder-container {
+    position: relative;
 
-.field__input:hover,
-.field__input:focus {
-  box-shadow: var(--input-shadow-hover);
-}
+    .input {
+      background-color: $container-color;
+      box-shadow: $input-shadow;
+      border-radius: $border-radius;
+      border: none;
+      padding: 12px 16px;
+      resize: none;
+      width: 100%;
+      transition: box-shadow 0.15s, 0.15s;
+      box-sizing: border-box;
+      outline: none;
+      border-width: 1px;
+      border-style: solid;
+      border-color: transparent;
 
-.field__input.error {
-  border-color: var(--red-color);
-}
+      &[type='number']::-webkit-outer-spin-button,
+      &[type='number']::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-.field__placeholder-container {
-  position: relative;
-}
+      &[type='number'][type='number'] {
+        -moz-appearance: textfield;
+      }
 
-.field__placeholder {
-  position: absolute;
-  color: var(--disabled-color);
-  pointer-events: none;
-  top: 12px;
-  left: 16px;
-  right: 16px;
-  font-weight: 400;
-  display: none;
-}
+      &:placeholder-shown + .placeholder {
+        display: initial;
+      }
 
-.field__error {
-  color: var(--red-color);
-  position: absolute;
-  left: 0;
-  bottom: -14px;
-}
+      &:hover,
+      &:focus {
+        box-shadow: $input-shadow-hover;
+      }
 
-.field__placeholder_shown {
-  display: initial;
+      &.error {
+        border-color: $red-color;
+      }
+    }
+
+    .placeholder {
+      position: absolute;
+      color: $disabled-color;
+      pointer-events: none;
+      top: 12px;
+      left: 16px;
+      right: 16px;
+      font-weight: 400;
+      display: none;
+    }
+  }
+
+  .error-text {
+    color: $red-color;
+    position: absolute;
+    left: 0;
+    bottom: -14px;
+  }
 }
 </style>

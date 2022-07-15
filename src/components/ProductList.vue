@@ -48,39 +48,30 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .product-list {
   grid-area: product-list;
-}
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: min-content;
-  gap: 20px;
-  /* padding-top: 20px; */
-}
-
-@media screen and (max-width: 1600px) {
   .products {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: min-content;
+    gap: 20px;
 
-@media screen and (max-width: 1150px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    @media screen and (max-width: 1600px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-@media screen and (max-width: 880px) {
-  .products {
-    grid-template-columns: 1fr;
-  }
-}
+    @media screen and (max-width: 1150px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
 
-@media screen and (max-width: 700px) and (min-width: 500px) {
-  .products {
-    grid-template-columns: repeat(2, 1fr);
+    @media screen and (max-width: 880px) {
+      grid-template-columns: 1fr;
+    }
+
+    @media screen and (max-width: 700px) and (min-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 

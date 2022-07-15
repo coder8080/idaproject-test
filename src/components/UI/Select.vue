@@ -22,23 +22,22 @@ export default {
   },
   methods: {
     onChange(event) {
-      console.log('change')
       this.$emit('update:modelValue', event.target.value)
     },
   },
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
 .select {
-  background-color: var(--container-color);
-  box-shadow: var(--input-shadow);
-  border-radius: var(--border-radius);
+  background-color: $container-color;
+  box-shadow: $input-shadow;
+  border-radius: $border-radius;
   padding: 12px 16px;
   transition: box-shadow 0.15s, 0.15s;
-}
 
-.select:hover,
-.select:active {
-  box-shadow: var(--input-shadow-hover);
+  &:hover,
+  &:active {
+    box-shadow: $input-shadow-hover;
+  }
 }
 </style>
