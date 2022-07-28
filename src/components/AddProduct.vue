@@ -150,10 +150,14 @@ export default {
   position: sticky;
   top: 32px;
   align-self: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
   grid-area: add-product;
+
+  .scroll-wrapper {
+    display: flex;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
 
   @media screen and (max-width: 700px) {
     position: fixed;
