@@ -55,7 +55,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: min-content;
-    gap: 20px;
+    gap: 16px;
 
     @media screen and (max-width: 1600px) {
       grid-template-columns: repeat(3, 1fr);
